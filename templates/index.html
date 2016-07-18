@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content_title %}Random Images{% endblock %}
+
+{% block content %}
+  {% for photo in photo_urls %}
+    <div class="container">
+      <img src="{{ photo }}" alt="HTML5 Icon" />
+      <p>This is an image</p>
+    </div>
+  {% endfor %}
+{% endblock %}

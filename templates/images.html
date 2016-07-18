@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+      <meta charset=utf-8 />
+      <title>Page Title</title>
+      <style>
+        div.container {
+          display:inline-block;
+        }
+
+        p {
+          text-align:center;
+        }
+      </style>
+    </head>
+
+    <body>
+        {% for photo in photo_urls %}
+        <div class="container">
+          <img src="{{ photo }}" alt="HTML5 Icon" />
+          <p>This is an image</p>
+        </div>
+        {% endfor %}
+    </body>
+
+</html>
