@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 
-{% block content_title %}Random Images{% endblock %}
+{% block content_title %}{% endblock %}
 
 {% block content %}
-  {% for photo in photo_urls %}
+  {% for photo_dict in photo_dicts %}
     <div class="container">
-      <img src="{{ photo }}" alt="HTML5 Icon" />
-      <p>This is an image</p>
+      <img src="{{ photo_dict['url_m'] }}" alt="HTML5 Icon" />
+      <br/>
+      <form method="post" action="{{ url_for('submit') }}">
+        <button type="submit" name='id' value="{{ photo_dict['id'] }}">Pick Me!</button>
+      </form>
     </div>
   {% endfor %}
 {% endblock %}

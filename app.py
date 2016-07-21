@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import requests
+from random import randint
 
 
 app = Flask(__name__)
@@ -31,27 +32,36 @@ PHOTO_LIST = 'photo'
 URL = 'url_m'
 
 
-
 @app.route('/')
 def index():
-    # r = requests.get('https://api.flickr.com/services/rest/?method=\
-    #                   flickr.photos.search&api_key=430f7acd5b6fd9cb\
-    #                   84c8b6c736e56d7e&tags=pokemon&extras=url_m&fo\
-    #                   rmat=json&nojsoncallback=1&auth_token=7215767\
-    #                   0486559662-b5cf454d32ef17e9&api_sig=d3139c45c\
-    #                   b84feace2c849c7780c431b')
+
     r = requests.get(BASE_URL, params=payload)
 
     json_response = r.json()
     json_data = json_response[DATA]
     json_photo_list = json_data[PHOTO_LIST]
 
-    photo_url = json_photo_list[0][URL]
-    photo_urls = [json_photo_list[1][URL], json_photo_list[2][URL]]
+    # photo_url = json_photo_list[0][URL]
+    num_photos = len(json_photo_list)
+    random_index_1 = randint(0, num_photos-1)
+    random_index_2 = randint(0, num_photos-1)
+    while random_index_1 == random_index_2:
+        random_index_2 = randint(0, num_photos-1)
+
+
+    photo_dicts = [json_photo_list[random_index_1],
+                  json_photo_list[random_index_2]]
 
     return render_template('index.html',
-                           photo_url=photo_url,
-                           photo_urls=photo_urls)
+                           photo_dicts=photo_dicts)
+
+
+@app.route('/submit/', methods=['POST'])
+def submit():
+    print(request)
+    image_id = request.form['id']
+    return image_id
+
 
 if __name__ == '__main__':
     app.run()
