@@ -7,7 +7,7 @@
     <div class="container">
       <img src="{{ photo_dict['url_m'] }}" alt="HTML5 Icon" />
       <br/>
-      <form method="post" action="{{ url_for('submit') }}">
+      <form method="post" action="{{ url_for('more_cats') }}">
         <button type="submit" name='id' value="{{ photo_dict['id'] }}">Pick Me!</button>
       </form>
     </div>

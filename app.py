@@ -55,13 +55,15 @@ def index():
     return render_template('index.html',
                            photo_dicts=photo_dicts)
 
-
-@app.route('/submit/', methods=['POST'])
-def submit():
+@app.route('/', methods=['POST'])
+def more_cats():
     print(request)
     image_id = request.form['id']
-    return image_id
+
+    return index()
+
+
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
