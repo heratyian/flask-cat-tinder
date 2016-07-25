@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content_title %}<h1>TOP CAT</h1>{% endblock %}
+
+{% block content %}
+  {% if top_cat_url %}
+    <div class="container">
+      <img src="{{ top_cat_url[0] }}" alt="HTML5 Icon" />
+    </div>
+  {% endif %}
+{% endblock %}
