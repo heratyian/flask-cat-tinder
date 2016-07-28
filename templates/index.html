@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 
-{% block content_title %}<h1>MORE CATS PLEEEEZ</h1>{% endblock %}
+{% block content_title %}<h1>MORE CATS PLEEZ</h1>{% endblock %}
 
 {% block content %}
   {% for photo_dict in photo_dicts %}
     <div class="container">
       <img src="{{ photo_dict['url_m'] }}" alt="HTML5 Icon" />
       <br/>
-      <form method='post' action="{{ url_for('more_cats') }}">
-        <input type='hidden' name='secret' value="{{ photo_dict['secret'] }}" />
-        <input type='hidden' name='url_m' value="{{ photo_dict['url_m'] }}" />
-        <input type='hidden' name='id' value="{{ photo_dict['id'] }}" />
-        <button type='submit' value='Submit'>Pick Me!</button>
-      </form>
+      <div style="text-align:center;">
+        <form class="button1" method='post' action="{{ url_for('more_cats') }}">
+          <input type='hidden' name='secret' value="{{ photo_dict['secret'] }}" />
+          <input type='hidden' name='url_m' value="{{ photo_dict['url_m'] }}" />
+          <input type='hidden' name='id' value="{{ photo_dict['id'] }}" />
+          <button type='submit' value='Submit'>Pick Me!</button>
+        </form>
+      </div>
     </div>
   {% endfor %}
 {% endblock %}

@@ -61,9 +61,8 @@ def index():
     while random_index_1 == random_index_2:
         random_index_2 = randint(0, num_photos-1)
 
-
     photo_dicts = [json_photo_list[random_index_1],
-                  json_photo_list[random_index_2]]
+                   json_photo_list[random_index_2]]
 
     return render_template('index.html',
                            photo_dicts=photo_dicts)
