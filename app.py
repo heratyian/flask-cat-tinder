@@ -134,4 +134,5 @@ def close_connection(exception):
         db.close()
 
 if __name__ == '__main__':
+    init_db()
     app.run(debug=True)
